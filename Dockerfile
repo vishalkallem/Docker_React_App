@@ -22,5 +22,8 @@ CMD [ "npm", "run", "build" ]
 # Use the official image for nginx
 FROM nginx as deployer
 
+# Inform Docker that the container is listening on the specified port at runtime.
+EXPOSE 80
+
 # Copy the npm run build snapshot from the builder phase.
 COPY --from=builder /app/build /usr/share/nginx/html
